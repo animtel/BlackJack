@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BlackJack.cs.Interfaces
 {
-    interface IDeckModel
+    interface ICalculate
     {
-        PlayingCard[] GenerateDeck();
-
-        void ShuffleDeck(ref PlayingCard[] deck);
+        void CalculateWinner(Player player, Player dealer);
     }
 }

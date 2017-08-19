@@ -42,7 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\Calculate.cs" />
+    <Compile Include="Game\Check.cs" />
+    <Compile Include="Game\Desk.cs" />
+    <Compile Include="Game\Output.cs" />
+    <Compile Include="Interfaces\ICalculate.cs" />
+    <Compile Include="Interfaces\ICheck.cs" />
     <Compile Include="Interfaces\IDeckModel.cs" />
+    <Compile Include="Interfaces\IOutput.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayingCard.cs" />

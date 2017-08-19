@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BlackJack.cs.Interfaces
 {
-    interface IDeckModel
+    interface ICheck
     {
-        PlayingCard[] GenerateDeck();
+        bool CheckPoints(Player player);
 
-        void ShuffleDeck(ref PlayingCard[] deck);
+        void CheckAces(ref Player player);
     }
 }
