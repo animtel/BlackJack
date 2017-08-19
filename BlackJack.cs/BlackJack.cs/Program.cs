@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlackJack.cs.Game;
 
 namespace BlackJack.cs
 {
@@ -10,9 +11,9 @@ namespace BlackJack.cs
     {
         static void Main(string[] args)
         {
-            Model md = new Model();
-            md.Play();
-           
+            Play md = new Play();
+            md.PlayGame();
+                       
             Console.ReadLine();
         }
         

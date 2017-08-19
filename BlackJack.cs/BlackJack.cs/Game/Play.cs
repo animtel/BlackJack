@@ -3,28 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlackJack.cs.Interfaces;
-using BlackJack.cs.Game;
 
-namespace BlackJack.cs
+namespace BlackJack.cs.Game
 {
-    class Model
+    class Play
     {
         Desk _desk = new Desk();
         Output _output = new Output();
         Check _check = new Check();
         Calculate _calc = new Calculate();
 
-        public void Play()
+        public void PlayGame()
         {
-            
+
             string _playAgain = "Undefined";
             do
             {
                 // Generate the deck of cards & shuffle it
                 PlayingCard[] deck = _desk.GenerateDeck();
                 //GenerateDeck(deck);
-                
+
                 _desk.ShuffleDeck(ref deck);
 
                 // Create the two player objects
