@@ -10,8 +10,11 @@ namespace BlackJack.cs
     {
         static void Main(string[] args)
         {
-            Model.onePlayer();
+            Model md = new Model();
+            md.Play();
+           
             Console.ReadLine();
         }
+        
     }
 }

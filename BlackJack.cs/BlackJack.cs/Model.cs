@@ -10,10 +10,11 @@ namespace BlackJack.cs
     class Model
     {
         static Player[] players = new Player[5];
+        PlayingCard[] deck;
         static int pointer = 0;
 
         // Generates the deck of 52 cards
-        public static PlayingCard[] generateDeck()
+        public PlayingCard[] GenerateDeck()
         {
             PlayingCard[] deck = new PlayingCard[52]; // Declares an array of PlayingCards with a size of 52
             int counter = 0; // Tells us where to save the next value into the array
@@ -32,7 +33,7 @@ namespace BlackJack.cs
         }
 
         // Procedure to shuffle the deck of cards
-        static void shuffleDeck(ref PlayingCard[] deck)
+        void ShuffleDeck(ref PlayingCard[] deck)
         {
             Random rnd = new Random(); // Creates new Random object
             PlayingCard temp; // Creates a variable for temporarily storing a PlayingCard
@@ -55,7 +56,7 @@ namespace BlackJack.cs
 
         // Output the details of a card using symbols - eg/ A♠
         // Used to output the player's hand on the same line (See outputHand procedure below)
-        static void outputCardSymbol(PlayingCard card)
+        void OutputCardSymbol(PlayingCard card)
         {
             switch (card.Value) // Case statement based on the value of card
             {
@@ -86,19 +87,19 @@ namespace BlackJack.cs
         }
 
         // Outputs all of the cards in a player's hand along with their point total
-        static void outputHand(Player player)
+        void OutputHand(Player player)
         {
             // Print "Current Hand: "
             Console.Write("Current Hand: ");
             // Loop through all cards in hand
             for (int i = 0; i < player.cardsInHand; i++)
             {
-                outputCardSymbol(player.hand[i]);
+                OutputCardSymbol(player.hand[i]);
             }
             Console.WriteLine("Current points: {0}.", player.points);
         }
 
-        static void drawCard(PlayingCard[] deck, ref Player player)
+        void DrawCard(PlayingCard[] deck, ref Player player)
         {
             PlayingCard nextCard = deck[pointer];
 
@@ -123,7 +124,7 @@ namespace BlackJack.cs
 
         // Check if the player has exceeded 21 points
         // Output the player's point total
-        static bool checkPoints(Player player)
+        bool CheckPoints(Player player)
         {
             // Output the player's point total
             //Console.WriteLine("Current Points: {0}", player.points);
@@ -140,7 +141,7 @@ namespace BlackJack.cs
         }
 
         // Compare the player & the dealer
-        static void calculateWinner(Player player, Player dealer)
+        void CalculateWinner(Player player, Player dealer)
         {
             // Player wins if... 
             if (dealer.points > 21 || player.cardsInHand == 5 && dealer.cardsInHand != 5)
@@ -177,7 +178,7 @@ namespace BlackJack.cs
         // Checks if the player has any aces with a point value of 11 (high)
         // If the player is about to go bust, change the ace to a point value of 1 (low)
         // Then update the player's score
-        static void checkAces(ref Player player)
+        void CheckAces(ref Player player)
         {
             bool changed = false; // Flags up if we've changed an ace already
             if (player.points > 21)
@@ -195,14 +196,16 @@ namespace BlackJack.cs
 
         }
 
-        public static void onePlayer()
+        public void Play()
         {
             string playAgain = "Undefined";
             do
             {
                 // Generate the deck of cards & shuffle it
-                PlayingCard[] deck = Model.generateDeck();
-                shuffleDeck(ref deck);
+                PlayingCard[] deck = GenerateDeck();
+                //GenerateDeck(deck);
+                
+                ShuffleDeck(ref deck);
 
                 // Create the two player objects
                 Player player = new Player();
@@ -214,13 +217,13 @@ namespace BlackJack.cs
                 dealer.name = Console.ReadLine();
 
                 // Draw the first two cards for the Player
-                drawCard(deck, ref player);
-                drawCard(deck, ref player);
+                DrawCard(deck, ref player);
+                DrawCard(deck, ref player);
 
 
-                checkAces(ref player); // Call checkAces to see if we can stop player going bust
-                outputHand(player);
-                checkPoints(player); // Output the player's point total
+                CheckAces(ref player); // Call checkAces to see if we can stop player going bust
+                OutputHand(player);
+                CheckPoints(player); // Output the player's point total
                 bool alive = true;
 
                 string choice = "Undefined";
@@ -231,13 +234,13 @@ namespace BlackJack.cs
                     choice = Console.ReadLine().ToUpper();
                     if (choice == "HIT") // If the user asks to hit then...
                     {
-                        drawCard(deck, ref player);
+                        DrawCard(deck, ref player);
 
                         // If player still has a valid point total, alive will remain true
                         // If the player is now bust, alive will become false and the loop will exit
-                        checkAces(ref player); // Call checkAces to see if we can stop player going bust
-                        outputHand(player);
-                        alive = checkPoints(player);
+                        CheckAces(ref player); // Call checkAces to see if we can stop player going bust
+                        OutputHand(player);
+                        alive = CheckPoints(player);
                     }
                 }
                 // If the player isn't bust, it's time for the dealer's turn
@@ -247,12 +250,12 @@ namespace BlackJack.cs
 
                     Console.WriteLine();
                     Console.WriteLine("*** Dealer's Turn ***");
-                    drawCard(deck, ref dealer);
-                    drawCard(deck, ref dealer);
+                    DrawCard(deck, ref dealer);
+                    DrawCard(deck, ref dealer);
 
-                    checkAces(ref dealer); // Call checkAces to see if we can stop dealer going bust
-                    outputHand(dealer);
-                    checkPoints(dealer);
+                    CheckAces(ref dealer); // Call checkAces to see if we can stop dealer going bust
+                    OutputHand(dealer);
+                    CheckPoints(dealer);
 
                     while (dealerAlive == true)
                     {
@@ -260,16 +263,16 @@ namespace BlackJack.cs
                         Console.ReadLine();
 
                         // Draw the dealer's next card and check if they are still alive
-                        drawCard(deck, ref dealer);
+                        DrawCard(deck, ref dealer);
 
-                        checkAces(ref dealer); // Call checkAces to see if we can stop dealer going bust
-                        outputHand(dealer);
-                        dealerAlive = checkPoints(dealer);
+                        CheckAces(ref dealer); // Call checkAces to see if we can stop dealer going bust
+                        OutputHand(dealer);
+                        dealerAlive = CheckPoints(dealer);
                     }
                 }
 
                 // Calculate & output the winner
-                calculateWinner(player, dealer);
+                CalculateWinner(player, dealer);
 
                 Console.Write("Do you want to play again? Y/N ");
                 playAgain = Console.ReadLine().ToUpper();

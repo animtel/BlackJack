@@ -18,16 +18,16 @@ namespace BlackJack.cs
             switch (s)
             {
                 case 1:
-                    Suit = "Krest";
+                    Suit = "K";
                     break;
                 case 2:
-                    Suit = "Cherv";
+                    Suit = "C";
                     break;
                 case 3:
-                    Suit = "Bybna";
+                    Suit = "B";
                     break;
                 case 4:
-                    Suit = "Pika";
+                    Suit = "P";
                     break;
             }
 
