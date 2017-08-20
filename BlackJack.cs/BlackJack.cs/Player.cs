@@ -9,9 +9,10 @@ namespace BlackJack.cs
     class Player
     {
         public PlayingCard[] hand;
-        public int cardsInHand;
-        public int points;
-        public string name;
+        public int cardsInHand { get; set; }
+
+        public int points { get; set; }
+        public string name { get; set; }
 
         public Player()
         {

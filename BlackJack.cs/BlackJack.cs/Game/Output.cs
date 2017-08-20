@@ -7,7 +7,7 @@ using BlackJack.cs.Interfaces;
 
 namespace BlackJack.cs.Game
 {
-    class Output : IOutput
+    class Output : IOutputer
     {
         public int pointer = 0;
 
@@ -54,7 +54,7 @@ namespace BlackJack.cs.Game
             Console.WriteLine("Current points: {0}.", player.points);
         }
 
-        public void DrawCard(PlayingCard[] deck, ref Player player)
+        public void DrawCard(List<PlayingCard> deck, ref Player player)
         {
             PlayingCard nextCard = deck[pointer];
 

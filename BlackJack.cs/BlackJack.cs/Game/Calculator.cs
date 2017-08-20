@@ -7,7 +7,7 @@ using BlackJack.cs.Interfaces;
 
 namespace BlackJack.cs.Game
 {
-    class Calculate : ICalculate
+    class Calculator : ICalculater
     {
         // Compare the player & the dealer
         public void CalculateWinner(Player player, Player dealer)

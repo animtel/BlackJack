@@ -11,7 +11,7 @@ namespace BlackJack.cs.Game
         Desk _desk = new Desk();
         Output _output = new Output();
         Check _check = new Check();
-        Calculate _calc = new Calculate();
+        Calculator _calc = new Calculator();
 
         public void PlayGame()
         {
@@ -19,9 +19,8 @@ namespace BlackJack.cs.Game
             string _playAgain = "Undefined";
             do
             {
-                // Generate the deck of cards & shuffle it
-                PlayingCard[] deck = _desk.GenerateDeck();
-                //GenerateDeck(deck);
+                List<PlayingCard> deck = _desk.GenerateDeck();
+                
 
                 _desk.ShuffleDeck(ref deck);
 

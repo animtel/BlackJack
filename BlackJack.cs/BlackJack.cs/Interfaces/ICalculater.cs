@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BlackJack.cs.Interfaces
 {
-    interface ICheck
+    interface ICalculater
     {
-        bool CheckPoints(Player player);
-
-        void CheckAces(ref Player player);
+        void CalculateWinner(Player player, Player dealer);
     }
 }

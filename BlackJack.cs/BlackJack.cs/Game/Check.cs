@@ -7,7 +7,7 @@ using BlackJack.cs.Interfaces;
 
 namespace BlackJack.cs.Game
 {
-    class Check : ICheck
+    class Check : IChecker
     {
         // Check if the player has exceeded 21 points
         // Output the player's point total

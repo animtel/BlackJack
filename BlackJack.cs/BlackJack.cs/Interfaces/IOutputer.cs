@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BlackJack.cs.Interfaces
 {
-    interface IOutput
+    interface IOutputer
     {
         void OutputCardSymbol(PlayingCard card);
         void OutputHand(Player player);
-        void DrawCard(PlayingCard[] deck, ref Player player);
+        void DrawCard(List<PlayingCard> deck, ref Player player);
     }
 }

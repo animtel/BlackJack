@@ -7,12 +7,14 @@ using BlackJack.cs.Interfaces;
 
 namespace BlackJack.cs.Game
 {
-    class Desk : IDeckModel
+    class Desk : IDeckModeler
     {
         // Generates the deck of 52 cards
-        public PlayingCard[] GenerateDeck()
+        public List<PlayingCard> GenerateDeck()
         {
-            PlayingCard[] deck = new PlayingCard[52]; // Declares an array of PlayingCards with a size of 52
+            //PlayingCard[] deck = new PlayingCard[52]; // Declares an array of PlayingCards with a size of 52
+            //IEnumerable<PlayingCard> deck;
+            List<PlayingCard> deck = new List<PlayingCard>();
             int counter = 0; // Tells us where to save the next value into the array
 
             // Nested for loop to generate all 52 cards - 4 possible suits with 13 possible values each
@@ -20,7 +22,8 @@ namespace BlackJack.cs.Game
             {
                 for (int value = 1; value < 14; value++) // Loop through the 13 possible values
                 {
-                    deck[counter] = new PlayingCard(suit, value); // Generate new card and store it in the deck
+                    //deck[counter] = new PlayingCard(suit, value); // Generate new card and store it in the deck
+                    deck.Add(new PlayingCard(suit, value));
                     counter++; // Increment the counter
                 }
             }
@@ -29,15 +32,15 @@ namespace BlackJack.cs.Game
         }
 
         // Procedure to shuffle the deck of cards
-        public void ShuffleDeck(ref PlayingCard[] deck)
+        public void ShuffleDeck(ref List<PlayingCard> deck)
         {
             Random rnd = new Random(); // Creates new Random object
             PlayingCard temp; // Creates a variable for temporarily storing a PlayingCard
             int num; // Creates an integer variable for storing the randomly generated numbers
 
-            for (int i = 0; i < deck.Length; i++) // Loop through each index in the array
+            for (int i = 0; i < deck.Count; i++) // Loop through each index in the array
             {
-                num = rnd.Next(0, deck.Length); // Generate random num between 0 & 51
+                num = rnd.Next(0, deck.Count); // Generate random num between 0 & 51
 
                 // Swap the contents of deck[i] and deck[num]
                 temp = deck[i];
