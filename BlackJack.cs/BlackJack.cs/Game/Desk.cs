@@ -9,11 +9,12 @@ namespace BlackJack.cs.Game
 {
     class Desk : IDeckModeler
     {
-        // Generates the deck of 52 cards
+
+        /// <summary>
+        /// Generates the deck of 52 cards
+        /// </summary>
         public List<PlayingCard> GenerateDeck()
         {
-            //PlayingCard[] deck = new PlayingCard[52]; // Declares an array of PlayingCards with a size of 52
-            //IEnumerable<PlayingCard> deck;
             List<PlayingCard> deck = new List<PlayingCard>();
             int counter = 0; // Tells us where to save the next value into the array
 
@@ -22,7 +23,6 @@ namespace BlackJack.cs.Game
             {
                 for (int value = 1; value < 14; value++) // Loop through the 13 possible values
                 {
-                    //deck[counter] = new PlayingCard(suit, value); // Generate new card and store it in the deck
                     deck.Add(new PlayingCard(suit, value));
                     counter++; // Increment the counter
                 }

@@ -23,7 +23,7 @@ namespace BlackJack.cs.Game
             {
                 Console.WriteLine("Draw!");
             }
-            // Otherwise, the dealer has won
+            // The dealer has won
             else if (dealer.points == 21 && player.points != 21 || player.cardsInHand < 5)
             {
                 Console.WriteLine("{0} wins", dealer.points);
