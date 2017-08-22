@@ -24,7 +24,6 @@ namespace BlackJack.cs.Game
 
                 _desk.ShuffleDeck(ref deck);
 
-                // Create the two player objects
                 Player player = new Player();
                 Console.Write("Please enter your name: ");
                 player.Name = Console.ReadLine();
@@ -33,7 +32,6 @@ namespace BlackJack.cs.Game
                 Console.Write("Please enter a name for the dealer: ");
                 dealer.Name = Console.ReadLine();
 
-                // Draw the first two cards for the Player
                 _output.DrawCard(deck, ref player);
                 _output.DrawCard(deck, ref player);
 
@@ -58,7 +56,6 @@ namespace BlackJack.cs.Game
                         alive = _check.CheckPoints(player);
                     }
                 }
-                // If the player isn't bust, it's time for the dealer's turn
                 if (alive == true)
                 {
                     bool dealerAlive = true;
@@ -85,7 +82,6 @@ namespace BlackJack.cs.Game
                     }
                 }
 
-                // Calculate & output the winner
                 _calc.CalculateWinner(player, dealer);
 
                 Console.Write("Do you want to play again? Y/N ");
