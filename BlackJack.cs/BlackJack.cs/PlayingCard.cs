@@ -11,38 +11,41 @@ namespace BlackJack.cs
         public string Suit { get; set; }
         public int Value { get; set; }
         public int Points { get; set; }
-
-        public PlayingCard(int s, int v)
+        
+        public PlayingCard(int suit, int value)
         {
-            Value = v;
-            switch (s)
-            {
-                case 1:
-                    Suit = "K";
-                    break;
-                case 2:
-                    Suit = "C";
-                    break;
-                case 3:
-                    Suit = "B";
-                    break;
-                case 4:
-                    Suit = "P";
-                    break;
-            }
+            Value = value;
+            Suit = SuitCard(suit);
+            
 
             if (Value > 10)
             {
                 Points = 10;
             }
-            else if (Value == 1) // If it's an ace
+
+            if (Value == 1) // If it's an ace
             {
                 Points = 11; // Set the points to 11
             }
+
             else
             {
                 Points = Value;
             }
+        }
+        public string SuitCard(int suit)
+        {
+            Array values = Enum.GetValues(typeof(Suits));
+            Suits randomSuit = (Suits)values.GetValue(suit);
+            return randomSuit.ToString();
+        }
+        enum Suits
+        {
+            Q,
+            K,
+            C,
+            B,
+            p
         }
     }
 }

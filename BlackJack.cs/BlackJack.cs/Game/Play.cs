@@ -8,15 +8,15 @@ namespace BlackJack.cs.Game
 {
     class Play
     {
-        Desk _desk = new Desk();
-        Output _output = new Output();
-        Check _check = new Check();
-        Calculator _calc = new Calculator();
+        private Desk _desk = new Desk();
+        private Output _output = new Output();
+        private Check _check = new Check();
+        private Calculator _calc = new Calculator();
 
         public void PlayGame()
         {
 
-            string _playAgain = "Undefined";
+            var _playAgain = "Undefined";
             do
             {
                 List<PlayingCard> deck = _desk.GenerateDeck();
@@ -27,11 +27,11 @@ namespace BlackJack.cs.Game
                 // Create the two player objects
                 Player player = new Player();
                 Console.Write("Please enter your name: ");
-                player.name = Console.ReadLine();
+                player.Name = Console.ReadLine();
 
                 Player dealer = new Player();
                 Console.Write("Please enter a name for the dealer: ");
-                dealer.name = Console.ReadLine();
+                dealer.Name = Console.ReadLine();
 
                 // Draw the first two cards for the Player
                 _output.DrawCard(deck, ref player);
@@ -41,9 +41,9 @@ namespace BlackJack.cs.Game
                 _check.CheckAces(ref player); // Call checkAces to see if we can stop player going bust
                 _output.OutputHand(player);
                 _check.CheckPoints(player); // Output the player's point total
-                bool alive = true;
+                var alive = true;
 
-                string choice = "Undefined";
+                var choice = "Undefined";
 
                 while (alive == true && choice != "STICK")
                 {
@@ -53,8 +53,6 @@ namespace BlackJack.cs.Game
                     {
                         _output.DrawCard(deck, ref player);
 
-                        // If player still has a valid point total, alive will remain true
-                        // If the player is now bust, alive will become false and the loop will exit
                         _check.CheckAces(ref player); // Call checkAces to see if we can stop player going bust
                         _output.OutputHand(player);
                         alive = _check.CheckPoints(player);
@@ -79,7 +77,6 @@ namespace BlackJack.cs.Game
                         Console.WriteLine("Press Enter to Continue");
                         Console.ReadLine();
 
-                        // Draw the dealer's next card and check if they are still alive
                         _output.DrawCard(deck, ref dealer);
 
                         _check.CheckAces(ref dealer); // Call checkAces to see if we can stop dealer going bust

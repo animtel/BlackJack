@@ -62,10 +62,6 @@
     <Compile Include="Game\Desk.cs" />
     <Compile Include="Game\Output.cs" />
     <Compile Include="Game\Play.cs" />
-    <Compile Include="Interfaces\ICalculater.cs" />
-    <Compile Include="Interfaces\IChecker.cs" />
-    <Compile Include="Interfaces\IDeckModeler.cs" />
-    <Compile Include="Interfaces\IOutputer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayingCard.cs" />
     <Compile Include="Program.cs" />

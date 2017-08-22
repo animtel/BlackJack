@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlackJack.cs.Interfaces;
 
 namespace BlackJack.cs.Game
 {
-    class Output : IOutputer
+    class Output
     {
         public int pointer = 0;
 
@@ -41,38 +40,30 @@ namespace BlackJack.cs.Game
             }
         }
 
-        // Outputs all of the cards in a player's hand along with their point total
         public void OutputHand(Player player)
         {
             // Print "Current Hand: "
             Console.Write("Current Hand: ");
             // Loop through all cards in hand
-            for (int i = 0; i < player.cardsInHand; i++)
+            for (int i = 0; i < player.CardsInHand; i++)
             {
-                OutputCardSymbol(player.hand[i]);
+                OutputCardSymbol(player.Hand[i]);
             }
-            Console.WriteLine("Current points: {0}.", player.points);
+            Console.WriteLine("Current points: {0}.", player.Points);
         }
 
         public void DrawCard(List<PlayingCard> deck, ref Player player)
         {
             PlayingCard nextCard = deck[pointer];
 
-            // Add the next card in the deck to the player's hand
-            if (player.cardsInHand < 5)
+            if (player.CardsInHand < 5)
             {
-                player.hand[player.cardsInHand] = nextCard;
+                player.Hand[player.CardsInHand] = nextCard;
 
-                // Increment the number of cards in the player's hand
-                player.cardsInHand++;
+                player.CardsInHand++;
 
-                // Add the point value of the new card to the player's total
-                player.points += nextCard.Points;
+                player.Points += nextCard.Points;
 
-                // Output the details of the card
-                //outputCard(nextCard);
-
-                // Increment the pointer
                 pointer++;
             }
         }

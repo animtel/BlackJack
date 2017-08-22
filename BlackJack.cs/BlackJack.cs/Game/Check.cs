@@ -3,21 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlackJack.cs.Interfaces;
 
 namespace BlackJack.cs.Game
 {
-    class Check : IChecker
+    class Check
     {
-        /// <summary>
-        /// Check if the player has exceeded 21 points
-        /// Output the player's point total
-        /// </summary>
-        /// <param name="player"></param>
+        
         public bool CheckPoints(Player player)
         {
             // Check if the player is bust
-            if (player.points > 21)
+            if (player.Points > 21)
             {
                 Console.WriteLine("Bust!");
                 return false;
@@ -29,28 +24,23 @@ namespace BlackJack.cs.Game
 
 
 
-        /// <summary>
-        /// Checks if the player has any aces with a point value of 11 (high)
-        /// If the player is about to go bust, change the ace to a point value of 1 (low)
-        /// Then update the player's score
-        /// </summary>
-        /// <param name="player"></param>
+       
         public void CheckAces(ref Player player)
         {
             bool changed = false; // Flags up if we've changed an ace already
-            if (player.points > 21)
+            if (player.Points <= 21)
             {
-                for (int i = 0; i < player.cardsInHand; i++)
+                return;
+            }
+            for (int i = 0; i < player.CardsInHand; i++)
+            {
+                if (player.Hand[i].Points == 11 && changed == false) // If it's a high ace
                 {
-                    if (player.hand[i].Points == 11 && changed == false) // If it's a high ace
-                    {
-                        player.hand[i].Points = 1; // Change it to a low ace
-                        player.points -= 10; // Take 10 away from player's points
-                        changed = true;
-                    }
+                    player.Hand[i].Points = 1; // Change it to a low ace
+                    player.Points -= 10; // Take 10 away from player's points
+                    changed = true;
                 }
             }
-
         }
     }
 }

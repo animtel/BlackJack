@@ -8,17 +8,17 @@ namespace BlackJack.cs
 {
     class Player
     {
-        public PlayingCard[] hand;
-        public int cardsInHand { get; set; }
+        public PlayingCard[] Hand;
+        public int CardsInHand { get; set; }
 
-        public int points { get; set; }
-        public string name { get; set; }
+        public int Points { get; set; }
+        public string Name { get; set; }
 
         public Player()
         {
-            hand = new PlayingCard[5];
-            cardsInHand = 0;
-            points = 0;
+            Hand = new PlayingCard[5];
+            CardsInHand = 0;
+            Points = 0;
         }
 
     }
