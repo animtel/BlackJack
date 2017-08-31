@@ -36,9 +36,9 @@ namespace BlackJack.cs.Game
                 _output.DrawCard(deck, ref player);
 
 
-                _check.CheckAces(ref player); // Call checkAces to see if we can stop player going bust
+                _check.CheckAces(ref player);
                 _output.OutputHand(player);
-                _check.CheckPoints(player); // Output the player's point total
+                _check.CheckPoints(player); 
                 var alive = true;
 
                 var choice = "Undefined";
@@ -47,11 +47,11 @@ namespace BlackJack.cs.Game
                 {
                     Console.Write("Hit or Stick? ");
                     choice = Console.ReadLine().ToUpper();
-                    if (choice == "HIT") // If the user asks to hit then...
+                    if (choice == "HIT") 
                     {
                         _output.DrawCard(deck, ref player);
 
-                        _check.CheckAces(ref player); // Call checkAces to see if we can stop player going bust
+                        _check.CheckAces(ref player); 
                         _output.OutputHand(player);
                         alive = _check.CheckPoints(player);
                     }
@@ -65,7 +65,7 @@ namespace BlackJack.cs.Game
                     _output.DrawCard(deck, ref dealer);
                     _output.DrawCard(deck, ref dealer);
 
-                    _check.CheckAces(ref dealer); // Call checkAces to see if we can stop dealer going bust
+                    _check.CheckAces(ref dealer); 
                     _output.OutputHand(dealer);
                     _check.CheckPoints(dealer);
 
@@ -76,13 +76,13 @@ namespace BlackJack.cs.Game
 
                         _output.DrawCard(deck, ref dealer);
 
-                        _check.CheckAces(ref dealer); // Call checkAces to see if we can stop dealer going bust
+                        _check.CheckAces(ref dealer); 
                         _output.OutputHand(dealer);
                         dealerAlive = _check.CheckPoints(dealer);
                     }
                 }
 
-                _calc.CalculateWinner(player, dealer);
+                Console.WriteLine(_calc.CalculateWinner(player, dealer));
 
                 Console.Write("Do you want to play again? Y/N ");
                 _playAgain = Console.ReadLine().ToUpper();

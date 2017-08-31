@@ -12,7 +12,7 @@ namespace BlackJack.cs.Game
 
         public void OutputCardSymbol(PlayingCard card)
         {
-            switch (card.Value) // Case statement based on the value of card
+            switch (card.Value)
             {
                 case 1:
                     Console.Write("A{0} ", card.Suit);

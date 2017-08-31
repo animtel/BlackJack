@@ -8,38 +8,35 @@ namespace BlackJack.cs.Game
 {
     class Calculator
     {
-        public void CalculateWinner(Player player, Player dealer)
+        public string CalculateWinner(Player player, Player dealer)
         {
-            
-            // Player wins if... 
             if (dealer.Points > 21 || player.CardsInHand == 5 && dealer.CardsInHand != 5)
             {
-                Console.WriteLine("{0} Wins!", player.Name);
+                return $"{player.Name} Wins!";
             }
-            // The game ends in a draw if... 
-            else if (dealer.Points == player.Points)
+            if (dealer.Points == player.Points)
             {
-                Console.WriteLine("Draw!");
+                return "Draw!";
             }
-            // The dealer has won
-            else if (dealer.Points == 21 && player.Points != 21 || player.CardsInHand < 5)
+            if (dealer.Points == 21 && player.Points != 21 || player.CardsInHand < 5)
             {
-                Console.WriteLine("{0} wins", dealer.Points);
+                return $"{dealer.Points} wins";
             }
-            else if (player.CardsInHand == 5 && dealer.CardsInHand == 5)
+            if (player.CardsInHand == 5 && dealer.CardsInHand == 5)
             {
                 if (player.Points > dealer.Points)
                 {
-                    Console.WriteLine("{0} wins! 5 card trick: higher than dealers. ", player.Name);
+                    return $"{player.Name} wins! 5 card trick: higher than dealers. ";
                 }
 
-                else if (player.Points == dealer.Points)
+                if (player.Points == dealer.Points)
                 {
-                    Console.WriteLine("It's a draw! 5 card trick: same! ");
+                    return "It's a draw! 5 card trick: same! ";
                 }
 
-                Console.WriteLine("{0} wins! 5 card trick: less than dealers. ", dealer.Name);
+                return $"{dealer.Name} wins! 5 card trick: less than dealers. ";
             }
+            return "";
         }
     }
 }

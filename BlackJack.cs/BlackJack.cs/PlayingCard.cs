@@ -23,9 +23,9 @@ namespace BlackJack.cs
                 Points = 10;
             }
 
-            if (Value == 1) // If it's an ace
+            if (Value == 1)
             {
-                Points = 11; // Set the points to 11
+                Points = 11; 
             }
 
             else

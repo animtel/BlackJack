@@ -15,27 +15,27 @@ namespace BlackJack.cs.Game
 
             int counter = 0;
 
-            for (int suit = 1; suit < 5; suit++) // Loop through the 4 possible suits
+            for (int suit = 1; suit < 5; suit++) 
             {
-                for (int value = 1; value < 14; value++) // Loop through the 13 possible values
+                for (int value = 1; value < 14; value++) 
                 {
                     deck.Add(new PlayingCard(suit, value));
-                    counter++; // Increment the counter
+                    counter++; 
                 }
             }
 
-            return deck; // Returns the completed deck
+            return deck; 
         }
 
         public void ShuffleDeck(ref List<PlayingCard> deck)
         {
-            Random rnd = new Random(); // Creates new Random object
-            PlayingCard temp; // Creates a variable for temporarily storing a PlayingCard
-            int num; // Creates an integer variable for storing the randomly generated numbers
+            Random rnd = new Random();
+            PlayingCard temp; 
+            int num; 
 
-            for (int i = 0; i < deck.Count; i++) // Loop through each index in the array
+            for (int i = 0; i < deck.Count; i++) 
             {
-                num = rnd.Next(0, deck.Count); // Generate random num between 0 & 51
+                num = rnd.Next(0, deck.Count);
 
                 temp = deck[i];
                 deck[i] = deck[num];

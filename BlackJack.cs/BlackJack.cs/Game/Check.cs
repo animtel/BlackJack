@@ -11,14 +11,12 @@ namespace BlackJack.cs.Game
         
         public bool CheckPoints(Player player)
         {
-            // Check if the player is bust
             if (player.Points > 21)
             {
                 Console.WriteLine("Bust!");
                 return false;
             }
 
-            // Return true if the player is still alive
             return true;
         }
 
@@ -27,17 +25,17 @@ namespace BlackJack.cs.Game
        
         public void CheckAces(ref Player player)
         {
-            bool changed = false; // Flags up if we've changed an ace already
+            bool changed = false; 
             if (player.Points <= 21)
             {
                 return;
             }
             for (int i = 0; i < player.CardsInHand; i++)
             {
-                if (player.Hand[i].Points == 11 && changed == false) // If it's a high ace
+                if (player.Hand[i].Points == 11 && changed == false)
                 {
-                    player.Hand[i].Points = 1; // Change it to a low ace
-                    player.Points -= 10; // Take 10 away from player's points
+                    player.Hand[i].Points = 1; 
+                    player.Points -= 10; 
                     changed = true;
                 }
             }
